@@ -55,12 +55,6 @@
 \newcommand{\keyterm}[1]{\textcolor{cttBlue}{\textbf{#1}}}
 \newcommand{\good}[1]{\textcolor{goodGreen}{\textbf{#1}}}
 \newcommand{\bad}[1]{\textcolor{badRed}{\textbf{#1}}}
-\setbeamercolor{keymessagebox}{fg=textGray,bg=white}
-\newcommand{\keymessage}[1]{%
-\vspace{0.06cm}
-\begin{beamercolorbox}[wd=\textwidth,sep=0.35ex,leftskip=0.2ex]{keymessagebox}
-{\textcolor{cttBlue}{\rule{1.4pt}{1.15em}}}\hspace{0.45em}\footnotesize #1
-\end{beamercolorbox}}
 \newcommand{\cardline}[1]{\par\noindent\textcolor{cttBlue}{\scriptsize$\bullet$}\hspace{0.35em}#1}
 \newcommand{\goalcard}[2]{%
 \begin{block}{#1}
@@ -101,7 +95,6 @@
 \end{tabular}
 \vspace{0.42cm}
 
-\keymessage{The structure follows the business questions: SAC, ARPU, churn, and overall health.}
 \end{column}
 \begin{column}{0.38\textwidth}
 \vspace{0.05cm}
@@ -133,7 +126,6 @@
 \includegraphics[width=\linewidth,height=0.55\textheight,keepaspectratio]{ch27_fig27_7_layout.png}
 \end{center}
 }
-\keymessage{Use this as a monitoring view: status first, diagnosis second.}
 \end{frame}
 
 % =========================================================
@@ -168,7 +160,6 @@
 \begin{minipage}[t]{0.30\textwidth}
 \goalcard{Operational signal}{\cardline{Service calls show burden.}\cardline{Target lines show FY2014 gap.}}
 \end{minipage}
-\keymessage{Priority: identify which acquisition driver is pushing SAC above the benchmark.}
 \end{frame}
 
 % =========================================================
@@ -187,7 +178,6 @@
 \begin{minipage}[t]{0.30\textwidth}
 \goalcard{Conversion}{\cardline{Offers compared with accepts.}\cardline{Gaps show upgrade room.}}
 \end{minipage}
-\keymessage{Read ARPU growth through mix, add-on contribution, and upgrade acceptance.}
 \end{frame}
 
 % =========================================================
@@ -206,7 +196,6 @@
 \begin{minipage}[t]{0.30\textwidth}
 \goalcard{Retention risk}{\cardline{Support KPIs show friction.}\cardline{Satisfaction flags churn risk.}}
 \end{minipage}
-\keymessage{The churn headline is favorable; support and satisfaction explain whether it is durable.}
 \end{frame}
 
 % =========================================================
@@ -241,7 +230,6 @@
 \textbf{Do not use:} detailed diagnosis by itself.
 \end{column}
 \end{columns}
-\keymessage{The summary column gives context; the goal rows explain what to act on.}
 \end{frame}
 
 % =========================================================
@@ -260,7 +248,6 @@
 \footnotesize\textbf{Small KPI cards.} Sparklines add trend context while keeping four support measures in a tight space.
 \end{column}
 \end{columns}
-\keymessage{Compact visuals work when labels, trends, and comparisons are resolved inside the chart.}
 \end{frame}
 
 % =========================================================
@@ -281,7 +268,6 @@
 \includegraphics[width=\linewidth,height=0.54\textheight,keepaspectratio]{ch27_fig27_7_layout.png}
 \end{center}
 }
-\keymessage{The layout supports two reading paths: across each goal row, then down the summary column.}
 \end{frame}
 
 % =========================================================
@@ -320,7 +306,6 @@
 \footnotesize\keyterm{Target lines}\\[-0.02cm]
 \scriptsize Current values versus benchmark.
 \end{minipage}
-\keymessage{Chart type follows the question: trend, comparison, compact status, or benchmark.}
 \end{frame}
 
 % =========================================================
@@ -343,7 +328,6 @@
 \end{columns}
 \vspace{0.08cm}
 \scriptsize\textbf{Other critiques:} red/green needs a non-color cue, and emphasis colors should be used sparingly.
-\keymessage{Accessibility and line separation are design requirements, not cosmetic refinements.}
 \end{frame}
 
 % =========================================================
@@ -357,7 +341,6 @@
   \item The design still requires care with accessibility, overlapping lines, and chart consistency.
 \end{itemize}
 \end{block}
-\keymessage{The goal is not more data on screen; it is faster decisions from the right evidence.}
 \end{frame}
 
 % =========================================================

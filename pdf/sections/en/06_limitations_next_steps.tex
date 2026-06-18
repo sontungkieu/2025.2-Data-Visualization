@@ -2,19 +2,22 @@
 
 \subsection{Current Limitations}
 \begin{itemize}
-  \item Current interpretations are based mainly on single-feature EDA.
-  \item The model metrics should be interpreted carefully because the churn
-  class is imbalanced; accuracy is less informative than recall, precision,
-  F1-score, ROC AUC, and PR-AUC for this task.
+  \item Most dashboard interpretations still come from single-feature EDA, so
+  the findings describe strong segment signals rather than full causal
+  explanations.
+  \item The model metrics require careful reading because the churn class is
+  imbalanced; accuracy is less informative than recall, precision, F1-score,
+  ROC AUC, and PR-AUC for this task.
   \item Several numeric variables are grouped for dashboard readability, which
   improves interpretation but can reduce predictive detail for the model.
   \item Some likely churn drivers are not available in the dataset, including
   detailed payment history, plan-change events, discount exposure, competitor
   offers, and support-ticket content.
-  \item The final dashboard screenshots are included, but not every recommended
-  course technique could be implemented before submission.
-  \item Some visual polish remains possible, especially consistent typography,
-  semantic color use, and clearer page-level titles.
+  \item The final dashboard prioritizes the course techniques that best support
+  this churn story. More optional views, such as small multiples or additional
+  distribution plots, remain possible future extensions.
+  \item Some visual polish remains possible, especially typography, page-level
+  titles, and a final contrast audit for every chart.
 \end{itemize}
 
 \subsection{Next Steps}
@@ -26,20 +29,20 @@
   Random Forest with XGBoost, LightGBM, or CatBoost.
   \item Add PR-AUC, threshold analysis, and class-imbalance handling to the
   modeling evaluation if the predictive workflow is extended.
-  \item If more time is available, refine chart titles, color semantics, and
-  churn-rate denominators directly in the dashboard artifact.
+  \item If more time is available, refine chart titles, verify color contrast,
+  and audit churn-rate denominators directly in the dashboard artifact.
   \item Add more final insight paragraphs after the group completes the oral
   presentation narrative.
 \end{enumerate}
 
 \section{Conclusion}
-This draft establishes the structure for the final telecom churn analysis
-report. The analysis should focus on churn rate by interpretable customer
-groups and clearly distinguish distribution from risk. The visualization design
-should follow the course guideline by connecting each chart to a relevant
-principle from visual encoding, graphical perception, figure design, table-data
-visualization, interaction, or storytelling. Based on the current EDA direction,
-customer experience variables are expected to be more informative than usage or
-credit-score variables when analyzed individually. The group repository also
-provides a Random Forest workflow that can be used to rank customers by
-retention priority.
+This report connects the churn dataset, EDA workflow, feature grouping, Random
+Forest outputs, and final Power BI dashboard into one analysis narrative. The
+main interpretation separates distribution from risk: customer counts explain
+segment size, while churn rates and average predicted probabilities explain
+which groups need attention. The final dashboard applies course concepts from
+visual encoding, graphical perception, table-data visualization, figure design,
+interaction, and storytelling. In the current results, customer-experience
+features such as satisfaction, complaints, service calls, late payments, and
+contract type provide the clearest signals for retention prioritization, while
+the model supports ranking customers rather than replacing business judgement.

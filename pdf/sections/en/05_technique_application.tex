@@ -3,180 +3,180 @@
 \subsection{Guideline Alignment}
 The course guideline at
 \url{https://datalab.vn/articles/2021-09/IT5425-quan-tri-du-lieu-va-truc-quan-hoa}
-requires the report to explain which visualization techniques from the course
-are applied to each relevant chart or page. It also requires the dataset to be
-searchable through Google Dataset Search, which is already documented in the
-dataset source section. This section follows that structure using the final
-dashboard screenshots prepared by the group for reporting.
+asks each project to explain which visualization techniques are used and where
+they appear in the final artifact. We use the course slides and the distilled
+note file \code{Slide data viz/2024/notes/00\_distilled\_knowledge.md} as the
+reference, then connect the concepts directly to the three final dashboard
+pages.
 
-The technique mapping below uses the course guideline, the local course slides,
-and the distilled note file
-\code{Slide data viz/2024/notes/00\_distilled\_knowledge.md}. The most relevant
-lectures are introduction to visualization, visual models and visual encoding,
-graphical perception, table-data visualization, figure design, and storytelling
-with data.
-
-\begin{itemize}
-  \item Introduction to data visualization.
-  \item Visual model and visual encoding.
-  \item Graphical perception.
-  \item Visualization for table data.
-  \item Principles of figure design.
-  \item Storytelling with data.
-\end{itemize}
-
-\subsection{Reusable Technique-Application Template}
-For each final chart or page, the report documents the design decision in the
-following format:
-\begin{itemize}
-  \item \textbf{Chart/Page}: name of the final page or visual.
-  \item \textbf{Technique / principle applied}: related course concept, such as
-  visual encoding, common baseline, proportional ink, or storytelling.
-  \item \textbf{How applied}: which variable is mapped to which mark, axis,
-  color, or interaction.
-  \item \textbf{Notes / adjustments}: limitations, denominator, or reason for
-  not using another chart type.
-\end{itemize}
-
-Example: in a churn-rate-by-satisfaction chart, satisfaction groups should be
-placed in ordinal order, churn rate should be encoded by bar length on a common
-axis, and a 9.92\% baseline line should identify above-baseline groups. The
-notes should state that these bars are within-group churn rates and therefore
-are not expected to sum to 100\%.
+\begin{table}[h]
+\centering
+\caption{Course knowledge used in the final dashboard}
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}p{0.34\textwidth}X}
+\toprule
+\textbf{Course knowledge} & \textbf{How we used it} & \textbf{Dashboard evidence} \\
+\midrule
+Visual encoding &
+We map categories to bar positions and quantitative values to bar length. Color
+is reserved for churn/risk emphasis. &
+Overview KPI page, selected-feature churn-rate chart, and Random Forest
+importance bars. \\
+Graphical perception &
+We rely on common baselines, sorted categories, and preattentive orange
+highlights instead of dense legends. &
+Churn driver page and dynamic risk chart rank higher-risk categories first. \\
+Table-data visualization &
+We aggregate customer-level rows into feature groups, rates, counts, and model
+summary tables. &
+Driver detail table, confusion matrix, split table, and risk-by-feature table. \\
+Figure design &
+We avoid decorative 3D effects, keep direct labels, state denominators, and use
+a gray--orange--blue palette for accessibility. &
+All final screenshots use flat charts, KPI cards, labels, and consistent risk
+colors. \\
+Interaction &
+We use slicers and view changes so one dashboard page can answer several
+feature-level questions. &
+Feature filters on the driver page and the single-select dynamic risk chart on
+the prediction page. \\
+Storytelling &
+We order the dashboard from context to drivers and then to model-assisted
+retention priority. &
+Page 1 gives the churn baseline, page 2 explains drivers, and page 3 supports
+retention targeting. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \subsection{Chapter 1: Overview of Data Visualization}
 \paragraph{Techniques / principles applied.}
-The project uses visualization for both exploratory and explanatory purposes.
-Exploratory charts help compare churned and non-churned customers across
-feature groups. Explanatory charts communicate which groups are above or below
-the baseline churn rate.
+We use visualization for both exploration and explanation. The EDA views help
+the group compare churned and non-churned customers, while the final dashboard
+explains which customer groups are above the baseline churn rate.
 
 \paragraph{How applied in the dashboard.}
-The final overview page starts with customer and churn KPIs, risk-level
-distribution, selected-feature churn-rate comparison, and a signup-month trend.
-This allows the audience to distinguish ``how many customers are in a group''
-from ``how risky that group is''.
+The overview page starts with total customers, churn count, churn rate, and risk
+distribution. This gives the audience a baseline before the report moves into
+feature-level churn drivers and prediction outputs.
 
 \paragraph{Notes / adjustments.}
-The dataset is large and customer-level, so the dashboard should avoid showing
-raw customer rows as the main view. Aggregated segment views are more suitable
-for decision making.
+The raw dataset is too large for direct row-level inspection during
+presentation, so the dashboard uses aggregated segment views and summary cards.
 
 \subsection{Chapter 2: Visual Models and Visual Encoding}
 \paragraph{Techniques / principles applied.}
-The selected variables cover several measurement levels: nominal variables
-such as contract type and payment method, ordinal or discrete variables such as
-customer satisfaction and complaint counts, and quantitative variables such as
-monthly charges, average monthly GB, credit score, and days since last
-interaction. The dashboard charts therefore use marks and channels that match
-each variable type.
+The selected variables have different measurement levels: contract type is
+nominal, satisfaction and payment groups are ordinal/discrete, and monthly
+charges or usage are quantitative. We therefore use categorical axes for groups
+and bar length for counts, churn rates, feature importance, and predicted risk.
 
 \paragraph{How applied in the dashboard.}
-Bar marks should encode grouped categories. Position on a common axis and bar
-length should encode counts and churn rates. Color hue should separate churn
-from non-churn when both categories are shown, while a distinct highlight color
-can mark groups whose churn rate is above the 9.92\% baseline.
+The selected-feature churn-rate chart maps feature categories to bars and
+within-category churn rate to bar length. The dynamic risk chart uses the same
+logic: the slicer selects a business feature, the axis shows its categories, and
+the bar length shows average predicted churn probability.
 
 \paragraph{Notes / adjustments.}
-The report should avoid over-encoding. A chart should not use color, shape, and
-size for the same distinction unless the redundancy improves accessibility.
+We avoid stacking unrelated risk metrics into one visual. Churn rate, customer
+share, and average predicted probability are kept as separate metrics because
+they answer different questions.
 
 \subsection{Chapter 3: Graphical Perception}
 \paragraph{Techniques / principles applied.}
-The design should prefer encodings that are easier to compare, especially
-position and length. Preattentive color can guide attention to high-risk
-groups. Gestalt principles such as proximity and similarity should group
-related charts and filters.
+We use encodings that people compare accurately: position, length, ordering, and
+clear baselines. Color is used to guide attention, not to carry the whole
+meaning.
 
 \paragraph{How applied in the dashboard.}
-For the EDA pages, customer-count bars and churn-rate bars should be placed near
-each other for the same feature. Bars should share a consistent baseline so
-that users can compare magnitudes accurately. Above-baseline churn groups should
-be highlighted consistently across all feature pages.
+The driver page places feature-level charts and detail tables together, so the
+viewer can compare category risk and segment size in the same context. The
+dynamic risk chart sorts categories by average predicted churn probability, so
+the highest-risk category appears first.
 
 \paragraph{Notes / adjustments.}
-Color must not be the only signal for risk. Labels, baseline lines, and
-consistent ordering should also indicate which groups are high risk.
+The gray--orange--blue palette helps draw attention to risk while staying more
+readable than red-green contrast. Labels, sorting, and chart titles remain
+available for viewers who cannot rely on color.
 
 \subsection{Chapter 4: Visualization for Table and Multidimensional Data}
 \paragraph{Techniques / principles applied.}
-The project mainly uses table-data visualization: amounts, distributions,
-proportions, and relationships between grouped features and churn. The current
-EDA plan separates customer distribution from churn risk.
+The project is mainly a table-data visualization problem. We transform
+customer-level records into grouped features, rates, counts, feature-importance
+tables, confusion matrices, and risk summaries.
 
 \paragraph{How applied in the dashboard.}
-Counts by churn status should use grouped bars. Churn rates by feature group
-should use independent bar charts with the baseline churn rate as a reference
-line. Numeric variables can use grouped bins, histograms, or box plots before
-being summarized into business-readable groups. Relationships among multiple
-features can be explored with filtered views or small multiples.
+The churn-driver page compares grouped categories against the overall churn
+baseline. The prediction page uses the long-format \code{RiskByFeature} table so
+the same bar chart can switch between contract type, satisfaction, complaints,
+service calls, late payments, and other selected features.
 
 \paragraph{Notes / adjustments.}
-Churn-rate bars across groups do not need to sum to 100\%. Each bar represents
-the churn rate inside that group, not the share of total churn. Stacked bars
-should only be used when the parts form a meaningful whole.
+Churn-rate bars and average-probability bars do not sum to 100\%. Each bar is a
+within-category metric. Only composition charts, such as share of churned
+customers, are expected to sum to a whole.
 
 \subsection{Chapter 5 and Chapter 7: Graph and Map Visualization}
 \paragraph{Techniques / principles applied.}
-These chapters are not central to the current dataset because the data does not
-contain explicit network edges or geographic locations.
+Graph and map techniques are not central to this dataset because the available
+fields do not contain network edges or geographic locations.
 
 \paragraph{How applied in the dashboard.}
-No graph layout or map view is used in the current version.
+The final dashboard therefore focuses on table-data visualization rather than
+adding graph layouts or maps that the data cannot support.
 
 \paragraph{Notes / adjustments.}
-If the group later adds geographic or relationship data, this section should be
-expanded with map encoding or graph-layout choices.
+If later data adds regions, stores, or customer relationships, this section can
+be extended with map encoding or graph-layout choices.
 
 \subsection{Chapter 6: Principles of Figure Design}
 \paragraph{Techniques / principles applied.}
-The final figures are evaluated against proportional ink, clear titles and
-captions, color accessibility, multi-panel consistency, and a balance between
-data and context. Unnecessary 3D charts should be avoided.
+We apply proportional ink, clear titles, readable labels, consistent colors, and
+simple layouts. The final pages avoid 3D effects and unnecessary decoration
+because the main task is comparison.
 
 \paragraph{How applied in the dashboard.}
-Bars should start from zero when encoding counts or rates. Each chart should
-include a title that states the analytical question, a y-axis label for the
-metric, and a data-source note where appropriate. Multi-panel pages should keep
-the same color mapping for churn and non-churn. Risk highlights should use a
-colorblind-aware palette and direct labels when possible.
+The overview page uses KPI cards for scale, the driver page uses bars and
+tables for segment comparison, and the prediction page combines model metrics
+with the dynamic risk chart. The gray--orange--blue palette gives a stable
+visual language: orange for warning or higher risk, blue for the main selected
+comparison, and gray for context.
 
 \paragraph{Notes / adjustments.}
-The dataset is aggregated for visualization, so overlapping points are less of
-a problem than in scatter plots. If scatter plots are added later, transparency,
-binning, or sampling should be used to reduce overlap.
+The dashboard still has room for typographic polish, but the report focuses on
+the design decisions that materially affect interpretation: denominator clarity,
+aggregation choice, sorting, and color accessibility.
 
 \subsection{Chapter 8: Interactive Visualization}
 \paragraph{Techniques / principles applied.}
-The relevant interaction techniques are filtering, selection, and view changes.
-Animation is not required because the available dataset is not time-series
-focused.
+The dashboard uses filtering, selection, and view changes. Interaction is used
+to support comparison rather than to hide the baseline or replace explanation.
 
 \paragraph{How applied in the dashboard.}
-Users should be able to filter by contract type, tenure group, satisfaction
-group, complaint group, service-call group, and payment behavior. Selecting a
-segment should update both the distribution view and the churn-rate view so
-that the effect of the filter is visible.
+The most advanced interaction is the Power BI dynamic risk chart. It uses a
+single-select slicer based on \code{RiskByFeature[feature\_display]}; the bar
+chart then shows \code{RiskByFeature[category]} and the Average of
+\code{RiskByFeature[avg\_churn\_probability\_pct]}. Selecting contract type
+changes the bars to month-to-month, one-year, and two-year contracts; selecting
+late payments changes the bars to late-payment groups.
 
 \paragraph{Notes / adjustments.}
-Interactions should support comparison, not hide the baseline. The 9.92\%
-overall churn-rate reference should remain visible whenever a filtered churn
-rate is shown.
+This chart is not a risk distribution. It compares average predicted churn
+probabilities, so the bars are not expected to add up to 100\%. Using Average
+instead of Sum prevents probability values from being interpreted incorrectly.
 
 \subsection{Chapter 9: Storytelling with Data}
 \paragraph{Techniques / principles applied.}
-The report should move from context to evidence and then to action. The target
-audience is a business or customer-retention team that needs to identify which
-customer groups deserve attention.
+The narrative moves from context to diagnosis and then to action. This matches
+the retention use case: managers first need the churn baseline, then the main
+drivers, and finally a way to prioritize customers.
 
 \paragraph{How applied in the dashboard.}
-The recommended narrative order is: introduce the churn problem, show the
-baseline churn rate, compare churned and non-churned customers, identify the
-strongest customer-experience signals, connect EDA with model outputs, and end
-with retention recommendations.
+The three final pages follow that order. Page 1 frames the overall churn
+problem, page 2 explains feature-level churn drivers, and page 3 connects model
+outputs with retention priority through predicted churn risk and the confusion
+matrix.
 
 \paragraph{Notes / adjustments.}
-Each page should have a clear message title. The final version should replace
-generic chart titles such as ``Churn by Feature'' with insight-oriented titles
-such as ``Low satisfaction customers churn above the baseline'' when the
-numbers support that statement.
+The final wording avoids treating the model as a perfect classifier. The model
+supports prioritization, while the dashboard and report provide the business
+context needed to interpret the predictions.

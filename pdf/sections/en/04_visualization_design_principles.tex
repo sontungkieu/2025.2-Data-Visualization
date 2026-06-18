@@ -1,10 +1,10 @@
 \section{Visualization Design Principles for Churn Analysis}
 
 \subsection{Audience and Analytical Questions}
-The visualization artifact is designed for analysts and customer-retention
-stakeholders. The intended use is not only to report how many customers churned,
-but to identify which customer groups are above the baseline churn rate and
-which groups should be prioritized for retention actions.
+We designed the visualization artifact for analysts and customer-retention
+stakeholders. The dashboard does not only report how many customers churned; it
+also points to customer groups above the baseline churn rate and helps the team
+decide which groups deserve retention attention.
 
 The core analytical questions are:
 \begin{enumerate}
@@ -16,9 +16,10 @@ The core analytical questions are:
 \end{enumerate}
 
 \subsection{Metric Semantics}
-The report separates distribution metrics from risk metrics. This distinction
-is essential because a segment can contain many customers but still have an
-average churn rate, while a smaller segment can have a much higher churn rate.
+We separate distribution metrics from risk metrics throughout the report. This
+distinction matters because a segment can contain many customers but still have
+an average churn rate, while a smaller segment can have a much higher churn
+rate.
 
 \begin{longtable}{p{0.25\textwidth}p{0.35\textwidth}p{0.30\textwidth}}
 \caption{Metric definitions used in the visualization design}\\
@@ -38,28 +39,30 @@ Number of churned customers in a segment. &
 Useful for workload sizing, but affected by segment size. \\
 Churn rate &
 Churn count divided by all customers in the same segment. &
-Measures within-segment risk and should be compared with the 9.92\% baseline. \\
+Measures within-segment risk and is compared with the 9.92\% baseline. \\
 Share of churned customers &
 Churned customers in a segment divided by all churned customers. &
 Shows composition of churned customers only; values can sum to 100\%. \\
 Predicted churn probability &
 Model-estimated probability of churn for customers or groups. &
 Useful for prioritization, not as a final business decision by itself. \\
+Average predicted churn probability &
+Mean predicted churn probability within a selected category. &
+Compares category risk; values are averaged and are not expected to sum to 100\%. \\
 Risk level &
 Grouped model or rule-based risk category. &
-Should use consistent thresholds and colors across pages. \\
+Uses consistent thresholds and colors across pages. \\
 \bottomrule
 \end{longtable}
 
 \subsection{Chart Selection by Analytical Task}
-The chart type should follow the task, not the visual style preference. The
-current churn project mainly contains table data, so the most relevant chart
-families are bar charts, distribution charts, relationship views, and summary
-tables.
+We chose chart types by task rather than by visual style. The churn dataset is
+mainly table data, so the dashboard relies on bar charts, distribution views,
+relationship views, and summary tables.
 
 \begin{table}[h]
 \centering
-\caption{Recommended chart types for churn analysis tasks}
+\caption{Chart types used for churn analysis tasks}
 \begin{tabularx}{\textwidth}{p{0.22\textwidth}p{0.30\textwidth}X}
 \toprule
 \textbf{Task} & \textbf{Recommended chart} & \textbf{Churn example} \\
@@ -70,77 +73,135 @@ Show distribution & Histogram or box plot & Credit score or monthly charges \\
 Show composition & 100\% stacked bar & Share of churned customers by segment \\
 Show relationship & Scatter, heatmap, or small multiples & Satisfaction vs. complaints \\
 Show model behavior & Metric cards and confusion matrix & AUC, precision, recall, F1-score \\
+Compare predicted risk dynamically & Horizontal bar chart with a single-select feature slicer & Average predicted churn probability by category within the selected feature \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
+As a team, we chose horizontal bar charts for most category comparisons because
+many labels are long, such as \textit{Number of Service Calls},
+\textit{Customer Satisfaction}, and \textit{Month-to-month}. Horizontal bars
+keep these labels readable while still using bar length for comparison.
+
 \subsection{Visual Encoding Rules}
-The design should use encodings that are easy to decode:
+In the final dashboard, we rely on encodings that are easy to decode during a
+short presentation:
 \begin{itemize}
-  \item Use position and bar length for comparing counts, churn rates, and
+  \item Position and bar length compare counts, churn rates, and
   feature importance.
-  \item Use color hue for categorical distinction such as churn versus
+  \item Color hue separates categorical states such as churn versus
   non-churn or low/medium/high risk.
-  \item Use a baseline line for churn-rate charts so above-baseline groups can
-  be detected quickly.
-  \item Avoid pie charts, donut charts, and 3D charts when accurate comparison
-  is required.
-  \item Avoid using color as the only carrier of meaning; pair color with
+  \item Baseline lines on churn-rate charts make above-baseline groups easy to
+  detect.
+  \item We avoid pie charts, donut charts, and 3D charts where accurate
+  comparison matters.
+  \item Color is not the only carrier of meaning; we pair color with
   labels, ordering, or reference lines.
 \end{itemize}
 
+We keep the 9.92\% overall churn rate as the main reference point because it
+prevents a common reading mistake: a large customer segment is not necessarily a
+high-risk segment. The baseline lets viewers compare each group by risk rather
+than by size alone.
+
 \subsection{Color System}
-The color system should encode meaning consistently. A single default blue for
-all charts is visually clean but does not communicate risk hierarchy. The
-recommended semantic palette is:
+The final dashboard uses a gray--orange--blue direction rather than a red-green
+palette. This was a team decision after reviewing the dashboard screenshots:
+orange is visible as a warning color, blue works as the main comparison color,
+and gray keeps supporting context quiet. The palette is more readable for
+color-vision-deficient users than red-green contrast, and we still support the
+colors with labels, sorting, and titles so the interpretation does not depend on
+hue alone.
 
 \begin{table}[h]
 \centering
-\caption{Suggested semantic color palette}
+\caption{Accessible semantic color palette}
 \begin{tabular}{lll}
 \toprule
 \textbf{Meaning} & \textbf{Color role} & \textbf{Suggested hex} \\
 \midrule
-Churn / high risk & Highlight and warning & \#D55E00 \\
-Medium risk & Intermediate priority & \#E69F00 \\
-Low risk & Safer segment & \#009E73 \\
-Neutral count / selected bar & Main neutral blue & \#2563EB \\
-Not churn / inactive context & Supporting gray-blue & \#64748B \\
+High risk / warning & Orange highlight & \#D55E00 \\
+Selected or primary comparison & Blue main signal & \#56B4E9 \\
+Neutral, low emphasis, or context & Gray support color & \#7A7A7A \\
+Not churn / inactive context & Muted gray-blue & \#64748B \\
 Background & Page background & \#F8FAFC \\
 Gridline / border & Low-contrast structure & \#E5E7EB \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-These colors should remain stable across pages. For example, high-risk
-customers should not be blue on one page and orange on another page. If color is
-used to highlight a high-risk segment, the chart should also include a label or
-baseline marker so that the message is still readable without color.
+These colors remain stable across pages. Orange is reserved for warning or
+highest-risk emphasis; blue carries the main selected comparison; gray provides
+context. When color highlights a high-risk segment, the chart also uses a label,
+sorting, or baseline marker so that the message remains readable without color.
+
+\subsection{Dynamic Risk-by-Feature Chart}
+The most technically complex dashboard visual is the dynamic bar chart for
+\textit{Average Predicted Churn Risk by Selected Feature}. In the Prediction
+page, a single-select feature slicer controls which business feature is shown,
+while the bar chart displays the categories inside that selected feature. We use
+a long-format table so one chart can switch between contract type, late
+payments, satisfaction, complaints, service calls, and the other selected
+features.
+
+\begin{table}[h]
+\centering
+\caption{Required long-format fields for the dynamic risk chart}
+\begin{tabularx}{\textwidth}{p{0.38\textwidth}X}
+\toprule
+\textbf{Field} & \textbf{Role in the visual} \\
+\midrule
+\code{feature} & Technical feature name from the data pipeline. \\
+\code{feature\_display} & Readable business name used in the slicer. \\
+\code{category} & Category shown on the bar-chart axis after a feature is selected. \\
+\code{customers} & Number of scored customers in the selected category. \\
+\code{predicted\_churn} & Number of customers above the prediction threshold. \\
+\code{avg\_churn\_probability\_pct} & Average predicted churn probability in percent. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The slicer uses \code{feature\_display}, not the technical \code{feature} field.
+The chart uses \code{category} on the category axis and
+\code{avg\_churn\_probability\_pct} on the value axis. The value aggregation is
+\textbf{Average}, not Sum, because probabilities are not additive. This is why
+the bars in this chart are not expected to add up to 100\%: each bar is a
+category-level average predicted probability, not a share of customers.
+
+We also use the wording \textit{Average Predicted Churn Risk} deliberately. It
+reminds the presenter that the chart compares average probability by category,
+not the distribution of customers across risk levels.
+
+The chart is sorted in descending order so the highest-risk category appears
+first. Tooltips provide customer count, predicted churn count, and average
+predicted probability. The scope is also explicit: this dynamic risk chart is
+calculated from active non-churn customers scored by the model, while the
+separate high/medium/low risk summary on the model-evaluation page represents
+the test-period evaluation.
 
 \subsection{Page-Level Visualization Structure}
-The final visualization artifact can be organized as a compact story rather
-than a collection of independent charts:
+We read the final visualization artifact as a compact story rather than a
+collection of independent charts:
 \begin{enumerate}
-  \item \textbf{Overview}: show total customers, churn count, non-churn count,
+  \item \textbf{Overview}: shows total customers, churn count, non-churn count,
   baseline churn rate, and risk-level distribution.
-  \item \textbf{Churn drivers}: compare feature-group churn rates against the
-  baseline and show top model feature importance.
-  \item \textbf{Churn-only composition}: show the share of churned customers by
+  \item \textbf{Churn drivers}: compares feature-group churn rates against the
+  baseline and shows top model feature importance.
+  \item \textbf{Churn-only composition}: shows the share of churned customers by
   selected segment, while clearly stating that the denominator is churned
   customers only.
-  \item \textbf{Model evaluation}: show AUC, accuracy, precision, recall,
+  \item \textbf{Model evaluation}: shows AUC, accuracy, precision, recall,
   F1-score, confusion matrix, and a short interpretation of model limitations.
-  \item \textbf{Prediction and retention priority}: show predicted churn
+  \item \textbf{Prediction and retention priority}: shows predicted churn
   customers, risk levels, and the features that define priority groups.
 \end{enumerate}
 
 \subsection{Final Dashboard Screenshots}
-The final reporting artifact contains three dashboard pages. The pages do not
-implement every recommended technique from the design checklist, but they are
-used as the final version for the project report due to time constraints. The
-most important requirement is that the interpretation remains clear: KPI cards
-summarize the problem size, bar charts compare segment risk, and model outputs
-support retention prioritization.
+The final reporting artifact contains three dashboard pages. Given the
+submission timeline, the group prioritized the techniques that most directly
+support the story: KPI cards summarize the problem size, bar charts compare
+segment risk, the feature slicer supports targeted exploration, and model
+outputs support retention prioritization.
 
 \begin{figure}[p]
 \centering
@@ -164,8 +225,7 @@ support retention prioritization.
 \end{figure}
 
 \subsection{Figure Quality Checklist}
-When reading the final screenshots, each chart should be checked against the
-following criteria:
+We used the following checklist when reading the final screenshots:
 \begin{itemize}
   \item The title states either the analytical question or the main insight.
   \item The denominator of every percentage or rate is explicit.

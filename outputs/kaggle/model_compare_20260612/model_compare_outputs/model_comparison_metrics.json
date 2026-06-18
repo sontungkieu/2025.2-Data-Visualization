@@ -1,0 +1,485 @@
+{
+  "dataset": "/kaggle/input/datasets/kieutung/datavis-customer-churn-phase2-corr/customer_churn_dataset_clean.csv",
+  "random_state": 42,
+  "split_summary": {
+    "full_rows": 840765,
+    "train_rows": 588535,
+    "validation_rows": 126115,
+    "test_rows": 126115,
+    "full_churn_rate": 0.09915,
+    "test_churn_rate": 0.099148
+  },
+  "results": [
+    {
+      "model_name": "RandomForest",
+      "feature_set": "grouped",
+      "status": "ok",
+      "train_seconds": 42.486,
+      "validation_selected_threshold": 0.571637,
+      "test_default_0_5": {
+        "threshold": 0.5,
+        "accuracy": 0.607913,
+        "balanced_accuracy": 0.627367,
+        "precision": 0.153043,
+        "recall": 0.651631,
+        "f1": 0.247871,
+        "roc_auc": 0.67651,
+        "average_precision": 0.19277,
+        "confusion_matrix": [
+          [
+            68519,
+            45092
+          ],
+          [
+            4356,
+            8148
+          ]
+        ],
+        "predicted_positive_rate": 0.422154
+      },
+      "test_selected_threshold": {
+        "threshold": 0.571637,
+        "accuracy": 0.757269,
+        "balanced_accuracy": 0.61233,
+        "precision": 0.186713,
+        "recall": 0.431542,
+        "f1": 0.260651,
+        "roc_auc": 0.67651,
+        "average_precision": 0.19277,
+        "confusion_matrix": [
+          [
+            90107,
+            23504
+          ],
+          [
+            7108,
+            5396
+          ]
+        ],
+        "predicted_positive_rate": 0.229156
+      },
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "min_samples_leaf": 50,
+        "class_weight": "balanced_subsample",
+        "random_state": 42,
+        "n_jobs": -1,
+        "numeric_features": [
+          "has_tech_support"
+        ],
+        "categorical_features": [
+          "tenure_group",
+          "contract",
+          "customer_satisfaction_group",
+          "num_complaints_group",
+          "num_service_calls_group",
+          "late_payments_group",
+          "monthlycharges_group",
+          "num_services_group"
+        ]
+      }
+    },
+    {
+      "model_name": "RandomForest",
+      "feature_set": "raw+grouped",
+      "status": "ok",
+      "train_seconds": 106.545,
+      "validation_selected_threshold": 0.544854,
+      "test_default_0_5": {
+        "threshold": 0.5,
+        "accuracy": 0.693145,
+        "balanced_accuracy": 0.628802,
+        "precision": 0.171849,
+        "recall": 0.548544,
+        "f1": 0.261709,
+        "roc_auc": 0.683469,
+        "average_precision": 0.202672,
+        "confusion_matrix": [
+          [
+            80557,
+            33054
+          ],
+          [
+            5645,
+            6859
+          ]
+        ],
+        "predicted_positive_rate": 0.316481
+      },
+      "test_selected_threshold": {
+        "threshold": 0.544854,
+        "accuracy": 0.766832,
+        "balanced_accuracy": 0.615787,
+        "precision": 0.193693,
+        "recall": 0.427383,
+        "f1": 0.266574,
+        "roc_auc": 0.683469,
+        "average_precision": 0.202672,
+        "confusion_matrix": [
+          [
+            91365,
+            22246
+          ],
+          [
+            7160,
+            5344
+          ]
+        ],
+        "predicted_positive_rate": 0.218769
+      },
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 16,
+        "min_samples_leaf": 50,
+        "class_weight": "balanced_subsample",
+        "random_state": 42,
+        "n_jobs": -1,
+        "numeric_features": [
+          "age",
+          "annual_income",
+          "dependents",
+          "senior_citizen",
+          "tenure",
+          "monthlycharges",
+          "totalcharges",
+          "num_services",
+          "has_phone_service",
+          "has_internet_service",
+          "has_online_security",
+          "has_online_backup",
+          "has_device_protection",
+          "has_tech_support",
+          "has_streaming_tv",
+          "has_streaming_movies",
+          "customer_satisfaction",
+          "num_complaints",
+          "num_service_calls",
+          "late_payments",
+          "avg_monthly_gb",
+          "days_since_last_interaction",
+          "credit_score"
+        ],
+        "categorical_features": [
+          "gender",
+          "education",
+          "marital_status",
+          "contract",
+          "payment_method",
+          "paperless_billing",
+          "tenure_group",
+          "customer_satisfaction_group",
+          "num_complaints_group",
+          "num_service_calls_group",
+          "late_payments_group",
+          "monthlycharges_group",
+          "num_services_group"
+        ]
+      }
+    },
+    {
+      "model_name": "XGBoost",
+      "feature_set": "raw+grouped",
+      "status": "ok",
+      "train_seconds": 20.222,
+      "validation_selected_threshold": 0.587382,
+      "test_default_0_5": {
+        "threshold": 0.5,
+        "accuracy": 0.637648,
+        "balanced_accuracy": 0.635579,
+        "precision": 0.161452,
+        "recall": 0.632997,
+        "f1": 0.257281,
+        "roc_auc": 0.685972,
+        "average_precision": 0.207431,
+        "confusion_matrix": [
+          [
+            72502,
+            41109
+          ],
+          [
+            4589,
+            7915
+          ]
+        ],
+        "predicted_positive_rate": 0.388725
+      },
+      "test_selected_threshold": {
+        "threshold": 0.587382,
+        "accuracy": 0.7709,
+        "balanced_accuracy": 0.615447,
+        "precision": 0.195722,
+        "recall": 0.421545,
+        "f1": 0.267326,
+        "roc_auc": 0.685972,
+        "average_precision": 0.207431,
+        "confusion_matrix": [
+          [
+            91951,
+            21660
+          ],
+          [
+            7233,
+            5271
+          ]
+        ],
+        "predicted_positive_rate": 0.213543
+      },
+      "params": {
+        "n_estimators": 350,
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "scale_pos_weight": 9.085771,
+        "objective": "binary:logistic",
+        "eval_metric": "aucpr",
+        "tree_method": "hist",
+        "random_state": 42,
+        "n_jobs": -1,
+        "numeric_features": [
+          "age",
+          "annual_income",
+          "dependents",
+          "senior_citizen",
+          "tenure",
+          "monthlycharges",
+          "totalcharges",
+          "num_services",
+          "has_phone_service",
+          "has_internet_service",
+          "has_online_security",
+          "has_online_backup",
+          "has_device_protection",
+          "has_tech_support",
+          "has_streaming_tv",
+          "has_streaming_movies",
+          "customer_satisfaction",
+          "num_complaints",
+          "num_service_calls",
+          "late_payments",
+          "avg_monthly_gb",
+          "days_since_last_interaction",
+          "credit_score"
+        ],
+        "categorical_features": [
+          "gender",
+          "education",
+          "marital_status",
+          "contract",
+          "payment_method",
+          "paperless_billing",
+          "tenure_group",
+          "customer_satisfaction_group",
+          "num_complaints_group",
+          "num_service_calls_group",
+          "late_payments_group",
+          "monthlycharges_group",
+          "num_services_group"
+        ]
+      }
+    },
+    {
+      "model_name": "LightGBM",
+      "feature_set": "raw+grouped",
+      "status": "ok",
+      "train_seconds": 16.062,
+      "validation_selected_threshold": 0.56491,
+      "test_default_0_5": {
+        "threshold": 0.5,
+        "accuracy": 0.642525,
+        "balanced_accuracy": 0.634193,
+        "precision": 0.161896,
+        "recall": 0.6238,
+        "f1": 0.257074,
+        "roc_auc": 0.685205,
+        "average_precision": 0.205119,
+        "confusion_matrix": [
+          [
+            73232,
+            40379
+          ],
+          [
+            4704,
+            7800
+          ]
+        ],
+        "predicted_positive_rate": 0.382024
+      },
+      "test_selected_threshold": {
+        "threshold": 0.56491,
+        "accuracy": 0.744566,
+        "balanced_accuracy": 0.622005,
+        "precision": 0.186566,
+        "recall": 0.46913,
+        "f1": 0.266964,
+        "roc_auc": 0.685205,
+        "average_precision": 0.205119,
+        "confusion_matrix": [
+          [
+            88035,
+            25576
+          ],
+          [
+            6638,
+            5866
+          ]
+        ],
+        "predicted_positive_rate": 0.249312
+      },
+      "params": {
+        "n_estimators": 500,
+        "learning_rate": 0.05,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "scale_pos_weight": 9.085771,
+        "random_state": 42,
+        "n_jobs": -1,
+        "verbosity": -1,
+        "numeric_features": [
+          "age",
+          "annual_income",
+          "dependents",
+          "senior_citizen",
+          "tenure",
+          "monthlycharges",
+          "totalcharges",
+          "num_services",
+          "has_phone_service",
+          "has_internet_service",
+          "has_online_security",
+          "has_online_backup",
+          "has_device_protection",
+          "has_tech_support",
+          "has_streaming_tv",
+          "has_streaming_movies",
+          "customer_satisfaction",
+          "num_complaints",
+          "num_service_calls",
+          "late_payments",
+          "avg_monthly_gb",
+          "days_since_last_interaction",
+          "credit_score"
+        ],
+        "categorical_features": [
+          "gender",
+          "education",
+          "marital_status",
+          "contract",
+          "payment_method",
+          "paperless_billing",
+          "tenure_group",
+          "customer_satisfaction_group",
+          "num_complaints_group",
+          "num_service_calls_group",
+          "late_payments_group",
+          "monthlycharges_group",
+          "num_services_group"
+        ]
+      }
+    },
+    {
+      "model_name": "CatBoost",
+      "feature_set": "raw+grouped",
+      "status": "ok",
+      "train_seconds": 232.397,
+      "validation_selected_threshold": 0.564777,
+      "test_default_0_5": {
+        "threshold": 0.5,
+        "accuracy": 0.634278,
+        "balanced_accuracy": 0.636911,
+        "precision": 0.161297,
+        "recall": 0.640195,
+        "f1": 0.257673,
+        "roc_auc": 0.688138,
+        "average_precision": 0.209795,
+        "confusion_matrix": [
+          [
+            71987,
+            41624
+          ],
+          [
+            4499,
+            8005
+          ]
+        ],
+        "predicted_positive_rate": 0.393522
+      },
+      "test_selected_threshold": {
+        "threshold": 0.564777,
+        "accuracy": 0.741411,
+        "balanced_accuracy": 0.624773,
+        "precision": 0.186733,
+        "recall": 0.479287,
+        "f1": 0.268756,
+        "roc_auc": 0.688138,
+        "average_precision": 0.209795,
+        "confusion_matrix": [
+          [
+            87510,
+            26101
+          ],
+          [
+            6511,
+            5993
+          ]
+        ],
+        "predicted_positive_rate": 0.254482
+      },
+      "params": {
+        "iterations": 450,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "loss_function": "Logloss",
+        "eval_metric": "PRAUC",
+        "auto_class_weights": "Balanced",
+        "random_seed": 42,
+        "verbose": false,
+        "allow_writing_files": false,
+        "thread_count": -1,
+        "numeric_features": [
+          "age",
+          "annual_income",
+          "dependents",
+          "senior_citizen",
+          "tenure",
+          "monthlycharges",
+          "totalcharges",
+          "num_services",
+          "has_phone_service",
+          "has_internet_service",
+          "has_online_security",
+          "has_online_backup",
+          "has_device_protection",
+          "has_tech_support",
+          "has_streaming_tv",
+          "has_streaming_movies",
+          "customer_satisfaction",
+          "num_complaints",
+          "num_service_calls",
+          "late_payments",
+          "avg_monthly_gb",
+          "days_since_last_interaction",
+          "credit_score"
+        ],
+        "categorical_features": [
+          "gender",
+          "education",
+          "marital_status",
+          "contract",
+          "payment_method",
+          "paperless_billing",
+          "tenure_group",
+          "customer_satisfaction_group",
+          "num_complaints_group",
+          "num_service_calls_group",
+          "late_payments_group",
+          "monthlycharges_group",
+          "num_services_group"
+        ]
+      }
+    }
+  ]
+}

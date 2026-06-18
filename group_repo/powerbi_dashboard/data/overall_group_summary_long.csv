@@ -1,0 +1,25 @@
+feature,feature_display,feature_order,category,category_raw,total_customers,churned_customers,non_churn_customers,churn_rate_pct
+tenure_group,Tenure,1,1-6 months,tenure_1_6,212409,22036,190373,10.37
+tenure_group,Tenure,1,7-15 months,tenure_7_15,196243,19720,176523,10.05
+tenure_group,Tenure,1,16-31 months,tenure_16_31,210297,20892,189405,9.93
+tenure_group,Tenure,1,32+ months,tenure_32_plus,221816,20714,201102,9.34
+contract,Contract Type,2,Month-to-month,month_to_month,16690,4418,12272,26.47
+contract,Contract Type,2,One year,one_year,462825,58511,404314,12.64
+contract,Contract Type,2,Two year,two_year,361250,20433,340817,5.66
+customer_satisfaction_group,Customer Satisfaction,3,Low (1-3),satisfaction_1_3,134705,20820,113885,15.46
+customer_satisfaction_group,Customer Satisfaction,3,Medium (4-6),satisfaction_4_6,277410,28040,249370,10.11
+customer_satisfaction_group,Customer Satisfaction,3,High (7-9),satisfaction_7_9,428650,34502,394148,8.05
+num_complaints_group,Number of Complaints,4,>1 complaint,complaints_gt_1,131527,19087,112440,14.51
+num_complaints_group,Number of Complaints,4,<=1 complaint,complaints_le_1,709238,64275,644963,9.06
+num_service_calls_group,Number of Service Calls,5,>3 calls,service_calls_gt_3,102165,15107,87058,14.79
+num_service_calls_group,Number of Service Calls,5,<=3 calls,service_calls_le_3,738600,68255,670345,9.24
+late_payments_group,Late Payments,6,3+ late payments,late_3_plus,6688,1163,5525,17.39
+late_payments_group,Late Payments,6,1-2 late payments,late_1_2,271029,31233,239796,11.52
+late_payments_group,Late Payments,6,0 late payments,late_0,563048,50966,512082,9.05
+monthlycharges_group,Monthly Charges,7,<200,monthly_lt_200,839934,83280,756654,9.92
+monthlycharges_group,Monthly Charges,7,>=200,monthly_ge_200,831,82,749,9.87
+num_services_group,Number of Services,8,1-2 services,services_1_2,456646,48756,407890,10.68
+num_services_group,Number of Services,8,3-4 services,services_3_4,292389,27276,265113,9.33
+num_services_group,Number of Services,8,5-6 services,services_5_6,91730,7330,84400,7.99
+has_tech_support,Tech Support,9,No,0.0,422822,47600,375222,11.26
+has_tech_support,Tech Support,9,Yes,1.0,417943,35762,382181,8.56

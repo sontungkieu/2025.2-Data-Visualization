@@ -1,0 +1,19 @@
+{
+  "dataset": "customer_churn_only.csv",
+  "target_unique_values": [
+    1
+  ],
+  "target_correlation_available": false,
+  "reason": "The churn_only dataset contains only churn=1 rows, so correlation with the churn target is undefined.",
+  "support_matrix": "churn_only_support_feature_correlation_matrix.csv",
+  "support_features": [
+    "annual_income_group",
+    "education_group",
+    "contract",
+    "paperless_billing_flag",
+    "num_complaints_group",
+    "num_service_calls_group",
+    "late_payments_group",
+    "monthlycharges_group"
+  ]
+}

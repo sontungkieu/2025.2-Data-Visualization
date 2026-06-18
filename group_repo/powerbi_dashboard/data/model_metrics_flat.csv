@@ -1,0 +1,8 @@
+metric,value,format
+Selected threshold,0.571637,number
+Test ROC AUC,0.67651,percent
+Test accuracy,0.761694,percent
+Test precision,0.187745,percent
+Test recall,0.421945,percent
+Test F1-score,0.259863,percent
+Default threshold recall,0.651631,percent

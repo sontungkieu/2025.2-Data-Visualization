@@ -1,0 +1,33 @@
+feature,category,customers,predicted_churn,avg_churn_probability,feature_display,avg_churn_probability_pct
+contract_display,Month-to-month,12272,12216,0.7147038996088658,Contract Type,71.47
+contract_display,One year,404314,135224,0.5421092377929035,Contract Type,54.21
+contract_display,Two year,340817,5262,0.3383983086553781,Contract Type,33.84
+num_services,1,214743,48884,0.47090282084165724,Number of Services,47.09
+num_services,2,193147,44125,0.4713438702490849,Number of Services,47.13
+num_services,3,162862,29776,0.4387842672630816,Number of Services,43.88
+num_services,4,102251,18634,0.43924622031080385,Number of Services,43.92
+num_services,5,51372,6827,0.41174952335902826,Number of Services,41.17
+num_services,6,33028,4456,0.4116601944108029,Number of Services,41.17
+has_tech_support_label,No,375222,93733,0.47960555080459033,Tech Support,47.96
+has_tech_support_label,Yes,382181,58969,0.4273539056154021,Tech Support,42.74
+num_service_calls,0,159068,23936,0.43543135055447985,Number of Service Calls,43.54
+num_service_calls,1,228037,36205,0.43843526197064514,Number of Service Calls,43.84
+num_service_calls,2,178995,31124,0.4436667898432917,Number of Service Calls,44.37
+num_service_calls,3,104245,20566,0.45101057886709195,Number of Service Calls,45.1
+num_service_calls,4,51430,23098,0.5395202108108108,Number of Service Calls,53.95
+num_service_calls,5,22158,10718,0.5516835677407708,Number of Service Calls,55.17
+num_service_calls,6,8468,4337,0.5625255008266415,Number of Service Calls,56.25
+num_service_calls,7,3240,1737,0.5726933280864197,Number of Service Calls,57.27
+num_service_calls,8,1151,634,0.5755786750651607,Number of Service Calls,57.56
+num_service_calls,9,423,237,0.5861127494089834,Number of Service Calls,58.61
+num_service_calls,10,124,71,0.5906902580645161,Number of Service Calls,59.07
+num_service_calls,11,41,26,0.6010841707317073,Number of Service Calls,60.11
+num_service_calls,12,23,13,0.5947038695652174,Number of Service Calls,59.47
+num_complaints,0.0,383751,56068,0.43391495888219184,Number of Complaints,43.39
+num_complaints,1.0,261212,43248,0.439856188195795,Number of Complaints,43.99
+num_complaints,2.0,88973,41525,0.5473102207973205,Number of Complaints,54.73
+num_complaints,3.0,19581,9865,0.5604764427250907,Number of Complaints,56.05
+num_complaints,4.0,3390,1734,0.5667700253687316,Number of Complaints,56.68
+num_complaints,5.0,440,236,0.5700951818181819,Number of Complaints,57.01
+num_complaints,6.0,49,21,0.5520217551020408,Number of Complaints,55.2
+num_complaints,7.0,7,5,0.6171624285714286,Number of Complaints,61.72

@@ -1,0 +1,59 @@
+\section{Expected Insights and Recommendations}
+
+\subsection{High-Priority Signals}
+The strongest expected signals are related to customer experience:
+\begin{itemize}
+  \item Low customer satisfaction.
+  \item High number of complaints.
+  \item High number of service calls.
+\end{itemize}
+These features are directly actionable because they can guide the customer
+support and retention teams toward customers who may be experiencing service
+problems.
+
+\subsection{Moderate Signal}
+Late payments are expected to have a moderate positive relationship with churn.
+This feature should be interpreted together with satisfaction, complaint
+history, and service calls before it is used for retention targeting.
+
+\subsection{Weak Standalone Signals}
+Average monthly GB usage, days since last interaction, and credit score are
+expected to have weak standalone separation between churn and non-churn
+customers. They may still be useful as filters or as supporting variables in a
+multivariate model.
+
+\subsection{Prediction Workflow Insight}
+The Random Forest workflow in the group repository supports the EDA findings by
+using interpretable churn-related features such as contract, satisfaction,
+complaints, service calls, late payments, monthly charges, service count, and
+tech support. Because the churn class is imbalanced, the model is more suitable
+for ranking retention priority than for making a final yes/no business decision
+without human review.
+
+\subsection{Retention Recommendations}
+\begin{enumerate}
+  \item Prioritize customers with low satisfaction scores for proactive support.
+  \item Create a complaint escalation view for customers with multiple
+  complaints.
+  \item Monitor repeated service calls as a sign of unresolved technical issues.
+  \item Combine late-payment signals with experience-related signals before
+  launching retention campaigns.
+  \item Avoid drawing strong conclusions from usage volume or credit score
+  alone.
+\end{enumerate}
+
+\subsection{Storytelling Flow for the Final Report}
+The final report narrative should move from context to action:
+\begin{enumerate}
+  \item Establish why churn matters for a subscription-based telecom company.
+  \item State the baseline churn rate and total customer population.
+  \item Separate segment size from within-segment churn risk.
+  \item Highlight above-baseline customer groups using EDA evidence.
+  \item Connect the EDA findings with model evaluation and feature importance.
+  \item End with retention actions that are tied to customer experience
+  variables.
+\end{enumerate}
+
+This narrative avoids treating the model as the only result. The model supports
+prioritization, while the visualization explains which segments are actionable
+and why they deserve attention.

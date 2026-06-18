@@ -1,0 +1,10 @@
+feature_family,max_abs_correlation_with_churn,mean_abs_correlation_with_churn,top_encoded_feature,top_encoded_feature_correlation
+contract,0.12396,0.101415,contract_two_year,-0.12396
+customer_satisfaction_group,0.080436,0.049092,customer_satisfaction_group_satisfaction_1_3,0.080436
+num_complaints_group,0.06492,0.062677,num_complaints_group_complaints_gt_1,0.06492
+num_service_calls_group,0.060786,0.060786,num_service_calls_group_service_calls_le_3,-0.060786
+has_tech_support,0.045477,0.045477,has_tech_support,-0.045477
+late_payments_group,0.041223,0.033408,late_payments_group_late_0,-0.041223
+num_services_group,0.028274,0.021886,num_services_group_services_1_2,0.028274
+tenure_group,0.011372,0.005742,tenure_group_tenure_32_plus,-0.011372
+monthlycharges_group,0.000198,0.000198,monthlycharges_group_monthly_ge_200,0.000198

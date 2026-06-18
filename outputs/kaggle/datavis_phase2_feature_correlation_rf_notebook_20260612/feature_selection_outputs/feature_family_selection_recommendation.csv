@@ -1,0 +1,10 @@
+feature_family,max_abs_correlation_with_churn,mean_abs_correlation_with_churn,top_encoded_feature,top_encoded_feature_correlation,total_importance,max_importance,correlation_rank,importance_rank,combined_rank_score
+contract,0.12396,0.101415,contract_two_year,-0.12396,0.5259553797570209,0.28081045167593993,1.0,1.0,2.0
+customer_satisfaction_group,0.080436,0.049092,customer_satisfaction_group_satisfaction_1_3,0.080436,0.18736294907139805,0.10418120046500491,2.0,2.0,4.0
+num_complaints_group,0.06492,0.062677,num_complaints_group_complaints_gt_1,0.06492,0.081824145233475,0.045618713396438346,3.0,3.0,6.0
+num_service_calls_group,0.060786,0.060786,num_service_calls_group_service_calls_le_3,-0.060786,0.06282146900742626,0.032316188277056256,4.0,4.0,8.0
+has_tech_support,0.045477,0.045477,has_tech_support,-0.045477,0.04793846680850483,0.04793846680850483,5.0,5.0,10.0
+late_payments_group,0.041223,0.033408,late_payments_group_late_0,-0.041223,0.04523097411728063,0.024634242268845218,6.0,6.0,12.0
+num_services_group,0.028274,0.021886,num_services_group_services_1_2,0.028274,0.031159333470164516,0.014865436922275984,7.0,7.0,14.0
+tenure_group,0.011372,0.005742,tenure_group_tenure_32_plus,-0.011372,0.017680222269244587,0.0049642494769352175,8.0,8.0,16.0
+monthlycharges_group,0.000198,0.000198,monthlycharges_group_monthly_ge_200,0.000198,2.7060265485390462e-05,1.6303587065327537e-05,9.0,9.0,18.0

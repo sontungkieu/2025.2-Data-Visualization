@@ -1,0 +1,44 @@
+-- Power BI DAX measures for DataVis churn dashboard
+-- These measures assume you import DataVis_PowerBI_Input.xlsx and keep the sheet names.
+
+Total Customers =
+MAXX(
+    FILTER(SplitSummary, SplitSummary[split] = "full"),
+    SplitSummary[rows]
+)
+
+Churned Customers =
+MAXX(
+    FILTER(SplitSummary, SplitSummary[split] = "full"),
+    SplitSummary[churn_1]
+)
+
+Non Churn Customers =
+MAXX(
+    FILTER(SplitSummary, SplitSummary[split] = "full"),
+    SplitSummary[non_churn_0]
+)
+
+Churn Rate =
+DIVIDE([Churned Customers], [Total Customers])
+
+Predicted Churn Customers =
+SUM(RiskLevelSummary[predicted_churn])
+
+High Risk Customers =
+CALCULATE(
+    SUM(RiskLevelSummary[customers]),
+    RiskLevelSummary[risk_level] = "High Risk"
+)
+
+Average Churn Probability =
+DIVIDE(
+    SUMX(RiskLevelSummary, RiskLevelSummary[customers] * RiskLevelSummary[avg_churn_probability]),
+    SUM(RiskLevelSummary[customers])
+)
+
+Churn-Only Customers =
+MAXX(
+    FILTER(SplitSummary, SplitSummary[split] = "full"),
+    SplitSummary[churn_1]
+)

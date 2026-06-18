@@ -1,0 +1,3 @@
+code eda: https://www.kaggle.com/code/isandeep06/customer-churn-eda-ml
+data: https://www.kaggle.com/datasets/isandeep06/customer-churn-prediction-dataset-1m/data
+file gộp thì tải từ link trên, 2 file churn và not_churn chỉ là 2 file tách ra thôi

@@ -1,0 +1,21 @@
+feature,feature_display,feature_order,category,category_raw,churned_customers,percentage_of_churned_customers
+contract,Contract Type,1,One year,one_year,58511,70.19
+contract,Contract Type,1,Two year,two_year,20433,24.51
+contract,Contract Type,1,Month-to-month,month_to_month,4418,5.3
+annual_income_group,Annual Income,2,30K-60K,income_30_60k,35518,42.61
+annual_income_group,Annual Income,2,60K-90K,income_60_90k,17734,21.27
+annual_income_group,Annual Income,2,<30K,income_lt_30k,17177,20.61
+annual_income_group,Annual Income,2,>90K,income_gt_90k,12933,15.51
+education_group,Education,3,Non-graduate,non_graduate,66635,79.93
+education_group,Education,3,Graduate,graduate,16727,20.07
+paperless_billing_flag,Paperless Billing,4,Yes,1.0,62293,74.73
+paperless_billing_flag,Paperless Billing,4,No,0.0,21069,25.27
+num_complaints_group,Number of Complaints,5,<=1 complaint,complaints_le_1,64275,77.1
+num_complaints_group,Number of Complaints,5,>1 complaint,complaints_gt_1,19087,22.9
+num_service_calls_group,Number of Service Calls,6,<=3 calls,service_calls_le_3,68255,81.88
+num_service_calls_group,Number of Service Calls,6,>3 calls,service_calls_gt_3,15107,18.12
+late_payments_group,Late Payments,7,0 late payments,late_0,50966,61.14
+late_payments_group,Late Payments,7,1-2 late payments,late_1_2,31233,37.47
+late_payments_group,Late Payments,7,3+ late payments,late_3_plus,1163,1.4
+monthlycharges_group,Monthly Charges,8,<200,monthly_lt_200,83280,99.9
+monthlycharges_group,Monthly Charges,8,>=200,monthly_ge_200,82,0.1

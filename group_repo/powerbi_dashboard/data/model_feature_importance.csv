@@ -1,0 +1,24 @@
+feature,importance,feature_clean
+contract_two_year,0.2916819925274006,Contract Two Year
+contract_one_year,0.1638775149622955,Contract One Year
+customer_satisfaction_group_satisfaction_1_3,0.1003410131143309,Customer Satisfaction Group Satisfaction 1 3
+contract_month_to_month,0.0689381098038143,Contract Month To Month
+customer_satisfaction_group_satisfaction_7_9,0.0615340476551304,Customer Satisfaction Group Satisfaction 7 9
+has_tech_support,0.0487397124322782,Has Tech Support
+num_complaints_group_complaints_le_1,0.0485225911231662,Num Complaints Group Complaints Le 1
+num_complaints_group_complaints_gt_1,0.0393651630026863,Num Complaints Group Complaints Gt 1
+num_service_calls_group_service_calls_gt_3,0.0277503091910059,Num Service Calls Group Service Calls Gt 3
+num_service_calls_group_service_calls_le_3,0.0275289792977588,Num Service Calls Group Service Calls Le 3
+late_payments_group_late_0,0.0253718861305503,Late Payments Group Late 0
+customer_satisfaction_group_satisfaction_4_6,0.0212029439914646,Customer Satisfaction Group Satisfaction 4 6
+late_payments_group_late_1_2,0.0179598247458488,Late Payments Group Late 1 2
+num_services_group_services_1_2,0.0160818093524333,Num Services Group Services 1 2
+num_services_group_services_5_6,0.0097947727559632,Num Services Group Services 5 6
+num_services_group_services_3_4,0.0069609411307062,Num Services Group Services 3 4
+tenure_group_tenure_1_6,0.0058712675422702,Tenure Group Tenure 1 6
+tenure_group_tenure_32_plus,0.0052622572186841,Tenure Group Tenure 32 Plus
+late_payments_group_late_3_plus,0.0045792901740727,Late Payments Group Late 3 Plus
+tenure_group_tenure_7_15,0.0045768125046802,Tenure Group Tenure 7 15
+tenure_group_tenure_16_31,0.0040121252216693,Tenure Group Tenure 16 31
+monthlycharges_group_monthly_lt_200,2.3664066994794067e-05,Monthlycharges Group Monthly Lt 200
+monthlycharges_group_monthly_ge_200,2.297205479431413e-05,Monthlycharges Group Monthly Ge 200

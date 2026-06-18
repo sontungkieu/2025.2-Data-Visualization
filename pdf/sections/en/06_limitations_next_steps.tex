@@ -1,0 +1,45 @@
+\section{Limitations and Next Steps}
+
+\subsection{Current Limitations}
+\begin{itemize}
+  \item Current interpretations are based mainly on single-feature EDA.
+  \item The model metrics should be interpreted carefully because the churn
+  class is imbalanced; accuracy is less informative than recall, precision,
+  F1-score, ROC AUC, and PR-AUC for this task.
+  \item Several numeric variables are grouped for dashboard readability, which
+  improves interpretation but can reduce predictive detail for the model.
+  \item Some likely churn drivers are not available in the dataset, including
+  detailed payment history, plan-change events, discount exposure, competitor
+  offers, and support-ticket content.
+  \item The final dashboard screenshots are included, but not every recommended
+  course technique could be implemented before submission.
+  \item Some visual polish remains possible, especially consistent typography,
+  semantic color use, and clearer page-level titles.
+\end{itemize}
+
+\subsection{Next Steps}
+\begin{enumerate}
+  \item Re-check all churn-rate values against the latest cleaned dataset.
+  \item Add more multivariate analysis after the single-feature EDA is stable.
+  \item Review Random Forest feature importance and high-risk customer examples.
+  \item Test raw numeric features together with grouped features and compare
+  Random Forest with XGBoost, LightGBM, or CatBoost.
+  \item Add PR-AUC, threshold analysis, and class-imbalance handling to the
+  modeling evaluation if the predictive workflow is extended.
+  \item If more time is available, refine chart titles, color semantics, and
+  churn-rate denominators directly in the dashboard artifact.
+  \item Add more final insight paragraphs after the group completes the oral
+  presentation narrative.
+\end{enumerate}
+
+\section{Conclusion}
+This draft establishes the structure for the final telecom churn analysis
+report. The analysis should focus on churn rate by interpretable customer
+groups and clearly distinguish distribution from risk. The visualization design
+should follow the course guideline by connecting each chart to a relevant
+principle from visual encoding, graphical perception, figure design, table-data
+visualization, interaction, or storytelling. Based on the current EDA direction,
+customer experience variables are expected to be more informative than usage or
+credit-score variables when analyzed individually. The group repository also
+provides a Random Forest workflow that can be used to rank customers by
+retention priority.

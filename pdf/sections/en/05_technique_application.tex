@@ -1,0 +1,182 @@
+\section{Technique Application According to Course Guideline}
+
+\subsection{Guideline Alignment}
+The course guideline at
+\url{https://datalab.vn/articles/2021-09/IT5425-quan-tri-du-lieu-va-truc-quan-hoa}
+requires the report to explain which visualization techniques from the course
+are applied to each relevant chart or page. It also requires the dataset to be
+searchable through Google Dataset Search, which is already documented in the
+dataset source section. This section follows that structure using the final
+dashboard screenshots prepared by the group for reporting.
+
+The technique mapping below uses the course guideline, the local course slides,
+and the distilled note file
+\code{Slide data viz/2024/notes/00\_distilled\_knowledge.md}. The most relevant
+lectures are introduction to visualization, visual models and visual encoding,
+graphical perception, table-data visualization, figure design, and storytelling
+with data.
+
+\begin{itemize}
+  \item Introduction to data visualization.
+  \item Visual model and visual encoding.
+  \item Graphical perception.
+  \item Visualization for table data.
+  \item Principles of figure design.
+  \item Storytelling with data.
+\end{itemize}
+
+\subsection{Reusable Technique-Application Template}
+For each final chart or page, the report documents the design decision in the
+following format:
+\begin{itemize}
+  \item \textbf{Chart/Page}: name of the final page or visual.
+  \item \textbf{Technique / principle applied}: related course concept, such as
+  visual encoding, common baseline, proportional ink, or storytelling.
+  \item \textbf{How applied}: which variable is mapped to which mark, axis,
+  color, or interaction.
+  \item \textbf{Notes / adjustments}: limitations, denominator, or reason for
+  not using another chart type.
+\end{itemize}
+
+Example: in a churn-rate-by-satisfaction chart, satisfaction groups should be
+placed in ordinal order, churn rate should be encoded by bar length on a common
+axis, and a 9.92\% baseline line should identify above-baseline groups. The
+notes should state that these bars are within-group churn rates and therefore
+are not expected to sum to 100\%.
+
+\subsection{Chapter 1: Overview of Data Visualization}
+\paragraph{Techniques / principles applied.}
+The project uses visualization for both exploratory and explanatory purposes.
+Exploratory charts help compare churned and non-churned customers across
+feature groups. Explanatory charts communicate which groups are above or below
+the baseline churn rate.
+
+\paragraph{How applied in the dashboard.}
+The final overview page starts with customer and churn KPIs, risk-level
+distribution, selected-feature churn-rate comparison, and a signup-month trend.
+This allows the audience to distinguish ``how many customers are in a group''
+from ``how risky that group is''.
+
+\paragraph{Notes / adjustments.}
+The dataset is large and customer-level, so the dashboard should avoid showing
+raw customer rows as the main view. Aggregated segment views are more suitable
+for decision making.
+
+\subsection{Chapter 2: Visual Models and Visual Encoding}
+\paragraph{Techniques / principles applied.}
+The selected variables cover several measurement levels: nominal variables
+such as contract type and payment method, ordinal or discrete variables such as
+customer satisfaction and complaint counts, and quantitative variables such as
+monthly charges, average monthly GB, credit score, and days since last
+interaction. The dashboard charts therefore use marks and channels that match
+each variable type.
+
+\paragraph{How applied in the dashboard.}
+Bar marks should encode grouped categories. Position on a common axis and bar
+length should encode counts and churn rates. Color hue should separate churn
+from non-churn when both categories are shown, while a distinct highlight color
+can mark groups whose churn rate is above the 9.92\% baseline.
+
+\paragraph{Notes / adjustments.}
+The report should avoid over-encoding. A chart should not use color, shape, and
+size for the same distinction unless the redundancy improves accessibility.
+
+\subsection{Chapter 3: Graphical Perception}
+\paragraph{Techniques / principles applied.}
+The design should prefer encodings that are easier to compare, especially
+position and length. Preattentive color can guide attention to high-risk
+groups. Gestalt principles such as proximity and similarity should group
+related charts and filters.
+
+\paragraph{How applied in the dashboard.}
+For the EDA pages, customer-count bars and churn-rate bars should be placed near
+each other for the same feature. Bars should share a consistent baseline so
+that users can compare magnitudes accurately. Above-baseline churn groups should
+be highlighted consistently across all feature pages.
+
+\paragraph{Notes / adjustments.}
+Color must not be the only signal for risk. Labels, baseline lines, and
+consistent ordering should also indicate which groups are high risk.
+
+\subsection{Chapter 4: Visualization for Table and Multidimensional Data}
+\paragraph{Techniques / principles applied.}
+The project mainly uses table-data visualization: amounts, distributions,
+proportions, and relationships between grouped features and churn. The current
+EDA plan separates customer distribution from churn risk.
+
+\paragraph{How applied in the dashboard.}
+Counts by churn status should use grouped bars. Churn rates by feature group
+should use independent bar charts with the baseline churn rate as a reference
+line. Numeric variables can use grouped bins, histograms, or box plots before
+being summarized into business-readable groups. Relationships among multiple
+features can be explored with filtered views or small multiples.
+
+\paragraph{Notes / adjustments.}
+Churn-rate bars across groups do not need to sum to 100\%. Each bar represents
+the churn rate inside that group, not the share of total churn. Stacked bars
+should only be used when the parts form a meaningful whole.
+
+\subsection{Chapter 5 and Chapter 7: Graph and Map Visualization}
+\paragraph{Techniques / principles applied.}
+These chapters are not central to the current dataset because the data does not
+contain explicit network edges or geographic locations.
+
+\paragraph{How applied in the dashboard.}
+No graph layout or map view is used in the current version.
+
+\paragraph{Notes / adjustments.}
+If the group later adds geographic or relationship data, this section should be
+expanded with map encoding or graph-layout choices.
+
+\subsection{Chapter 6: Principles of Figure Design}
+\paragraph{Techniques / principles applied.}
+The final figures are evaluated against proportional ink, clear titles and
+captions, color accessibility, multi-panel consistency, and a balance between
+data and context. Unnecessary 3D charts should be avoided.
+
+\paragraph{How applied in the dashboard.}
+Bars should start from zero when encoding counts or rates. Each chart should
+include a title that states the analytical question, a y-axis label for the
+metric, and a data-source note where appropriate. Multi-panel pages should keep
+the same color mapping for churn and non-churn. Risk highlights should use a
+colorblind-aware palette and direct labels when possible.
+
+\paragraph{Notes / adjustments.}
+The dataset is aggregated for visualization, so overlapping points are less of
+a problem than in scatter plots. If scatter plots are added later, transparency,
+binning, or sampling should be used to reduce overlap.
+
+\subsection{Chapter 8: Interactive Visualization}
+\paragraph{Techniques / principles applied.}
+The relevant interaction techniques are filtering, selection, and view changes.
+Animation is not required because the available dataset is not time-series
+focused.
+
+\paragraph{How applied in the dashboard.}
+Users should be able to filter by contract type, tenure group, satisfaction
+group, complaint group, service-call group, and payment behavior. Selecting a
+segment should update both the distribution view and the churn-rate view so
+that the effect of the filter is visible.
+
+\paragraph{Notes / adjustments.}
+Interactions should support comparison, not hide the baseline. The 9.92\%
+overall churn-rate reference should remain visible whenever a filtered churn
+rate is shown.
+
+\subsection{Chapter 9: Storytelling with Data}
+\paragraph{Techniques / principles applied.}
+The report should move from context to evidence and then to action. The target
+audience is a business or customer-retention team that needs to identify which
+customer groups deserve attention.
+
+\paragraph{How applied in the dashboard.}
+The recommended narrative order is: introduce the churn problem, show the
+baseline churn rate, compare churned and non-churned customers, identify the
+strongest customer-experience signals, connect EDA with model outputs, and end
+with retention recommendations.
+
+\paragraph{Notes / adjustments.}
+Each page should have a clear message title. The final version should replace
+generic chart titles such as ``Churn by Feature'' with insight-oriented titles
+such as ``Low satisfaction customers churn above the baseline'' when the
+numbers support that statement.

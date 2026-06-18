@@ -1,0 +1,148 @@
+\section{Dataset}
+
+\subsection{Dataset Source}
+The dataset is a large customer churn prediction dataset with simulated, privacy-preserving customer records. It is available on Kaggle and can be accessed at:
+\url{https://www.kaggle.com/datasets/isandeep06/customer-churn-prediction-dataset-1m/data}. It can also be searched through Google Dataset Search:
+\url{https://datasetsearch.research.google.com/search?query=Customer%20Churn%20Prediction%20Dataset%201M}.
+
+The source-level statistics are summarized in Table \ref{tab:source_listing}.
+
+\begin{table}[h]
+\centering
+\caption{Kaggle source listing summary}
+\label{tab:source_listing}
+\begin{tabular}{ll}
+\toprule
+\textbf{Item} & \textbf{Value} \\
+\midrule
+Dataset title & Customer Churn Prediction Dataset 1M \\
+Source platform & Kaggle \\
+Original scale & 1,000,000 customer records \\
+Original feature count & 28 features + 1 target variable\\
+Main target & Customer churn label \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:dataset_features} summarizes all variables included in the dataset, grouped into their respective categories along with a brief description of each feature.
+
+\begin{table}[ht]
+\centering
+\caption{Dataset feature description}
+\label{tab:dataset_features}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Category} & \textbf{Column} & \textbf{Description} \\
+\hline
+
+\multirow{9}{*}{Customer Demographics}
+& customer\_id & Unique customer identifier \\ \cline{2-3}
+& signup\_date & Customer registration date \\ \cline{2-3}
+& age & Customer age (18--90) \\ \cline{2-3}
+& gender & Gender: Male, Female, Other \\ \cline{2-3}
+& annual\_income & Annual income in USD \\ \cline{2-3}
+& education & Education level \\ \cline{2-3}
+& marital\_status & Marital status \\ \cline{2-3}
+& dependents & Number of dependents (0--5) \\ \cline{2-3}
+& senior\_citizen & 1 if age $\geq$ 65, else 0 \\
+\hline
+
+\multirow{6}{*}{Account Information}
+& tenure & Months with company (1--72) \\ \cline{2-3}
+& contract & Contract type: month\_to\_month, one\_year, two\_year \\ \cline{2-3}
+& payment\_method & Payment method \\ \cline{2-3}
+& paperless\_billing & Paperless billing: Yes/No \\
+\hline
+
+\multirow{13}{*}{Service Usage \& Billing}
+& monthlycharges & Monthly service charges (\$20--\$200) \\ \cline{2-3}
+& totalcharges & Total charges to date \\ \cline{2-3}
+& num\_services & Number of subscribed services (1--6) \\ \cline{2-3}
+& has\_phone\_service & 1 if has phone service \\ \cline{2-3}
+& has\_internet\_service & 1 if has internet service \\ \cline{2-3}
+& has\_online\_security & 1 if has online security \\ \cline{2-3}
+& has\_online\_backup & 1 if has online backup \\ \cline{2-3}
+& has\_device\_protection & 1 if has device protection \\ \cline{2-3}
+& has\_tech\_support & 1 if has tech support \\ \cline{2-3}
+& has\_streaming\_tv & 1 if has streaming TV \\ \cline{2-3}
+& has\_streaming\_movies & 1 if has streaming movies \\
+\hline
+
+\multirow{9}{*}{Customer Behavior \& Risk}
+& customer\_satisfaction & Satisfaction score (1--10) \\ \cline{2-3}
+& num\_complaints & Complaints in last year (0--8) \\ \cline{2-3}
+& num\_service\_calls & Service calls last month (0--12) \\ \cline{2-3}
+& late\_payments & Late payments last 3 months (0--5) \\ \cline{2-3}
+& avg\_monthly\_gb & Average monthly data usage (GB) \\ \cline{2-3}
+& days\_since\_last\_interaction & Days since last contact (1--365) \\ \cline{2-3}
+& credit\_score & Credit score (300--850) \\
+\hline
+
+\multirow{1}{*}{Target Variable}
+& churn & Target: 1 if churned, 0 if retained \\
+\hline
+
+\end{tabularx}
+\end{table}
+
+\subsection{Preprocessing}
+The dataset was cleaned by removing records with missing values and split into churn and non-churn subsets for the group analysis.
+
+The resulting datasets' sizes are as shown in Table \ref{tab:dataset_size}.
+\begin{table}[h]
+\centering
+\caption{Current dataset size}
+\label{tab:dataset_size}
+\begin{tabular}{lr}
+\toprule
+\textbf{Segment} & \textbf{Number of customers} \\
+\midrule
+Churn & 83,362 \\
+Not churn & 757,403 \\
+Total & 840,765 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Working Dataset Descriptive Statistics}
+After cleaning and splitting the downloaded data, the working dataset used in
+this report contains 840,765 rows and 32 columns, with no missing values. Numeric descriptive statistics are shown in
+Table~\ref{tab:working_numeric_stats}.
+
+\begin{table}[h]
+\centering
+\caption{Numeric statistics in the working dataset}
+\label{tab:working_numeric_stats}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Feature} & \textbf{Mean} & \textbf{Median} & \textbf{Min} & \textbf{Max} \\
+\midrule
+Age & 44.72 & 44.00 & 18.00 & 90.00 \\
+Annual income & 58,809.80 & 48,973.70 & 20,000.00 & 250,000.00 \\
+Dependents & 0.80 & 1.00 & 0.00 & 5.00 \\
+Tenure & 22.40 & 16.00 & 1.00 & 72.00 \\
+Senior citizen & 0.20 & 0.00 & 0.00 & 1.00 \\
+Monthly charges & 86.43 & 85.46 & 20.00 & 854.96 \\
+Total charges & 1,838.74 & 1,250.23 & 16.30 & 16,252.86 \\
+Num services & 2.56 & 2.00 & 1.00 & 6.00 \\
+Has phone service & 0.77 & 1.00 & 0.00 & 1.00 \\
+Has internet service & 0.85 & 1.00 & 0.00 & 1.00 \\
+Has online security & 0.34 & 0.00 & 0.00 & 1.00 \\
+Has online backup & 0.43 & 0.00 & 0.00 & 1.00 \\
+Has device protection & 0.30 & 0.00 & 0.00 & 1.00 \\
+Has tech support & 0.50 & 0.00 & 0.00 & 1.00 \\
+Has streaming TV & 0.60 & 1.00 & 0.00 & 1.00 \\
+Has streaming movies & 0.55 & 1.00 & 0.00 & 1.00 \\
+Customer satisfaction & 6.16 & 7.00 & 1.00 & 9.00 \\
+Number of complaints & 0.70 & 1.00 & 0.00 & 7.00 \\
+Number of service calls & 1.76 & 1.00 & 0.00 & 12.00 \\
+Late payments & 0.40 & 0.00 & 0.00 & 5.00 \\
+Average monthly GB & 39.08 & 27.75 & 0.00 & 557.82 \\
+Days since last interaction & 44.47 & 31.00 & 1.00 & 365.00 \\
+Credit score & 678.54 & 680.00 & 300.00 & 850.00 \\
+Churn & 0.10 & 0.00 & 0.00 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Additionally, table \ref{tab:dataset_size} shows that the baseline churn rate is approximately 9.92\%. This number is used as the reference point when interpreting group-level churn rates. A group above this baseline should be considered higher risk, while a group below the baseline is relatively lower risk.

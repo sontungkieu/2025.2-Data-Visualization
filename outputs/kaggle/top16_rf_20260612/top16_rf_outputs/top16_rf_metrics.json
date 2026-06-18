@@ -1,0 +1,75 @@
+{
+  "dataset": "/kaggle/input/datasets/kieutung/datavis-customer-churn-phase2-corr/customer_churn_dataset_clean.csv",
+  "selection_rule": "top 16 encoded features by absolute Pearson correlation with churn from previous phase-2 correlation run",
+  "model": {
+    "name": "RandomForestClassifier",
+    "n_estimators": 200,
+    "max_depth": 12,
+    "min_samples_leaf": 50,
+    "class_weight": "balanced_subsample",
+    "random_state": 42
+  },
+  "top16_encoded_features": [
+    "contract_two_year",
+    "contract_one_year",
+    "customer_satisfaction_group_satisfaction_1_3",
+    "contract_month_to_month",
+    "num_complaints_group_complaints_le_1",
+    "num_complaints_group_complaints_gt_1",
+    "customer_satisfaction_group_satisfaction_7_9",
+    "num_service_calls_group_service_calls_le_3",
+    "num_service_calls_group_service_calls_gt_3",
+    "has_tech_support",
+    "late_payments_group_late_0",
+    "late_payments_group_late_1_2",
+    "num_services_group_services_1_2",
+    "num_services_group_services_5_6",
+    "late_payments_group_late_3_plus",
+    "num_services_group_services_3_4"
+  ],
+  "split_rows": {
+    "train": 588535,
+    "validation": 126115,
+    "test": 126115
+  },
+  "test_churn_rate": 0.099148,
+  "validation_selected_threshold": 0.554207,
+  "test_default_0_5": {
+    "threshold": 0.5,
+    "accuracy": 0.617302,
+    "precision": 0.154746,
+    "recall": 0.640915,
+    "f1": 0.2493,
+    "roc_auc": 0.67606,
+    "confusion_matrix": [
+      [
+        69837,
+        43774
+      ],
+      [
+        4490,
+        8014
+      ]
+    ],
+    "predicted_positive_rate": 0.410641
+  },
+  "test_selected_threshold": {
+    "threshold": 0.554207,
+    "accuracy": 0.724902,
+    "precision": 0.177864,
+    "recall": 0.489923,
+    "f1": 0.260981,
+    "roc_auc": 0.67606,
+    "confusion_matrix": [
+      [
+        85295,
+        28316
+      ],
+      [
+        6378,
+        6126
+      ]
+    ],
+    "predicted_positive_rate": 0.2731
+  }
+}

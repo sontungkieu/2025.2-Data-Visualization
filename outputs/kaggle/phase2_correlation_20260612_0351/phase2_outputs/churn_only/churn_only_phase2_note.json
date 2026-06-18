@@ -1,0 +1,7 @@
+{
+  "rows": 83362,
+  "churn_1": 83362,
+  "non_churn_0": 0,
+  "can_train_binary_churn_classifier": false,
+  "reason": "customer_churn_only.csv contains only churn=1 rows, so it is a support/profiling dataset rather than a standalone binary classifier training set."
+}

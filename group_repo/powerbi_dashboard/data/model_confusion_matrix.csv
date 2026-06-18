@@ -1,0 +1,5 @@
+actual,predicted,customers
+Not Churned,Not Churned,90785
+Not Churned,Churned,22826
+Churned,Not Churned,7228
+Churned,Churned,5276

@@ -1,0 +1,77 @@
+\section{Exploratory Data Analysis Plan}
+
+\subsection{How Churn-Rate Charts Should Be Read}
+In churn-rate charts, a bar does not represent a distribution that sums to
+100\% across groups. Each bar represents the churn rate inside one group:
+\[
+  \text{Churn Rate}_{group}
+  =
+  \frac{\text{Number of churned customers in the group}}
+       {\text{Total customers in the group}}
+  \times 100\%.
+\]
+This means each group should be compared independently against the baseline
+churn rate of approximately 9.92\%.
+
+\subsection{Customer Experience Features}
+\begin{longtable}{p{0.28\textwidth}p{0.62\textwidth}}
+\caption{Planned EDA interpretation by feature}\\
+\toprule
+\textbf{Feature} & \textbf{Preliminary interpretation} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Feature} & \textbf{Preliminary interpretation} \\
+\midrule
+\endhead
+Customer satisfaction &
+Higher satisfaction tends to lean toward non-churn. Low satisfaction groups are
+expected to have higher churn risk. \\
+Number of complaints &
+More complaints are associated with a higher churn rate and should be treated as
+a strong customer-experience risk signal. \\
+Number of service calls &
+More service calls may indicate unresolved service problems and higher churn
+risk. \\
+Late payments &
+More late payments are associated with higher churn rate, although the signal is
+weaker than satisfaction and complaints. \\
+Average monthly GB &
+Usage groups have relatively similar churn rates; this feature is weak as a
+standalone churn driver. \\
+Days since last interaction &
+Churn rates are expected to be nearly flat across time-since-interaction
+groups, so this feature should be combined with other signals. \\
+Credit score &
+Credit-score groups show small churn-rate differences and are not expected to be
+a major standalone churn signal. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Planned EDA Visuals}
+For each selected feature, the final report should include two complementary
+visuals:
+\begin{enumerate}
+  \item Customer count by churn status for each group.
+  \item Churn rate for each group.
+\end{enumerate}
+This structure separates customer distribution from churn risk. A large segment
+does not automatically mean high churn risk, and a small segment can still be
+important if its churn rate is much higher than the baseline.
+
+\subsection{Priority of Feature Interpretation}
+The feature interpretation should be ordered by actionability. Customer
+experience and payment-behavior variables are more useful for retention
+planning because they can trigger operational actions. Usage and credit
+variables should be treated as supporting context unless they show a clear
+above-baseline churn-rate pattern.
+
+\begin{enumerate}
+  \item Customer satisfaction.
+  \item Number of complaints.
+  \item Number of service calls.
+  \item Late payments.
+  \item Average monthly GB.
+  \item Days since last interaction.
+  \item Credit score.
+\end{enumerate}

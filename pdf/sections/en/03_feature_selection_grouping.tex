@@ -1,0 +1,140 @@
+\section{Feature Selection and Grouping}
+
+\subsection{Rationale}
+The dataset contains a diverse set of demographic, account, service usage, and customer behavior variables that may influence customer churn. To facilitate a structured exploratory data analysis, features are organized into logical categories based on their business context. This categorization improves the interpretability of the analysis by allowing related variables to be examined together and helps identify patterns associated with customer retention and churn. In addition, selected continuous variables are grouped into meaningful ranges where appropriate to simplify visualization and discussion of customer characteristics. The same feature organization is maintained throughout the project to ensure consistency between the exploratory analysis and the predictive modeling stages.
+
+\subsection{Selected Overall Model Features}
+The overall churn prediction model uses the full dataset with both churned and
+non-churned customers. The selected raw features are:
+\begin{itemize}
+  \item tenure
+  \item contract
+  \item customer\_satisfaction
+  \item num\_complaints
+  \item num\_service\_calls
+  \item late\_payments
+  \item monthlycharges
+  \item num\_services
+  \item has\_tech\_support
+\end{itemize}
+
+These variables cover four main analytical dimensions: customer tenure, contract
+commitment, customer experience, and service/payment behavior.
+
+\subsection{Correlation Matrix Screening}
+Before finalizing the Phase 2 feature set, the encoded overall dataset was
+screened with a Pearson correlation matrix. The full matrix is exported by the
+pipeline as \code{overall\_encoded\_correlation\_matrix.csv}. Because the full
+matrix is too wide for the report, Table \ref{tab:top_churn_correlations}
+summarizes the strongest encoded-feature correlations with the churn target
+using shortened feature labels. These values should be read as univariate
+screening signals, not as final causal evidence.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Top encoded features by absolute correlation with churn}
+\label{tab:top_churn_correlations}
+\begin{tabularx}{\textwidth}{p{0.28\textwidth}rrX}
+\toprule
+\textbf{Feature signal} & \textbf{Corr.} & \textbf{|Corr.|} & \textbf{Interpretation} \\
+\midrule
+\code{contract: two-year} & -0.123686 & 0.123686 & Two-year contracts are associated with lower churn. \\
+\code{contract: one-year} & 0.100979 & 0.100979 & One-year contracts have higher churn than the two-year group. \\
+\code{satisfaction: 1--3} & 0.080981 & 0.080981 & Low satisfaction is associated with higher churn. \\
+\code{contract: month-to-month} & 0.078836 & 0.078836 & Month-to-month contracts are associated with higher churn. \\
+\code{complaints: <= 1} & -0.066236 & 0.066236 & Fewer complaints are associated with lower churn. \\
+\code{complaints: > 1} & 0.066236 & 0.066236 & More complaints are associated with higher churn. \\
+\code{satisfaction: 7--9} & -0.063678 & 0.063678 & High satisfaction is associated with lower churn. \\
+\code{service calls: <= 3} & -0.060627 & 0.060627 & Fewer service calls are associated with lower churn. \\
+\code{service calls: > 3} & 0.060627 & 0.060627 & More service calls are associated with higher churn. \\
+\code{has tech support} & -0.045187 & 0.045187 & Technical support is associated with lower churn. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+At the feature-family level, the largest absolute correlations are concentrated
+in contract type, customer satisfaction, complaints, service calls, technical
+support, and late payments. Tenure and monthly charges are much weaker in this
+screening. This supports using the customer-experience and contract-related
+features as the primary explanatory features in the dashboard, while treating
+low-correlation variables as supporting context rather than dominant churn
+drivers.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Feature-family correlation summary}
+\label{tab:family_correlation_summary}
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Feature family} & \textbf{Max |corr.|} & \textbf{Mean |corr.|} & \textbf{Top encoded feature} \\
+\midrule
+\code{contract} & 0.123686 & 0.101167 & \code{contract\_two\_year} \\
+\code{customer\_satisfaction\_group} & 0.080981 & 0.049728 & \code{satisfaction\_1\_3} \\
+\code{num\_complaints\_group} & 0.066236 & 0.066236 & \code{complaints\_le\_1} \\
+\code{num\_service\_calls\_group} & 0.060627 & 0.060627 & \code{service\_calls\_le\_3} \\
+\code{has\_tech\_support} & 0.045187 & 0.045187 & \code{has\_tech\_support} \\
+\code{late\_payments\_group} & 0.041126 & 0.033550 & \code{late\_0} \\
+\code{num\_services\_group} & 0.027798 & 0.021552 & \code{services\_1\_2} \\
+\code{tenure\_group} & 0.011551 & 0.005833 & \code{tenure\_32\_plus} \\
+\code{monthlycharges\_group} & 0.000050 & 0.000050 & \code{monthly\_ge\_200} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The churn-only dataset is not used for target-correlation screening because it
+contains only churned customers. In that file, the churn target has no class
+variation, so correlation with churn is undefined. Churn-only correlations are
+therefore useful only for profiling relationships inside the churned-customer
+group.
+
+\subsection{Selected Churn-Only Support Features}
+The churn-only file contains only customers who already churned, so it is not
+used to train a standalone binary classifier. Instead, it supports profiling and
+explanation of the churned customer group. The selected support features are:
+\begin{itemize}
+  \item annual\_income
+  \item education
+  \item contract
+  \item paperless\_billing
+  \item num\_complaints
+  \item num\_service\_calls
+  \item late\_payments
+  \item monthlycharges
+\end{itemize}
+
+\subsection{Feature Grouping Rules}
+\small
+\begin{longtable}{p{0.24\textwidth}p{0.27\textwidth}p{0.39\textwidth}}
+\caption{Raw features and grouping rules used by the project pipeline}\\
+\toprule
+\textbf{Raw feature} & \textbf{Grouped feature} & \textbf{Grouping rule} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Raw feature} & \textbf{Grouped feature} & \textbf{Grouping rule} \\
+\midrule
+\endhead
+annual\_income & annual\_income\_group & $<30$K, 30--60K, 60--90K, $>90$K \\
+education & education\_group & master/PhD = graduate; others = non-graduate \\
+tenure & tenure\_group & 1--6, 7--15, 16--31, 32+ months \\
+contract & contract & original contract category, one-hot encoded for modeling \\
+paperless\_billing & paperless\_billing\_flag & No = 0; Yes = 1 \\
+customer\_satisfaction & customer\_satisfaction\_group & 1--3, 4--6, 7--9 \\
+num\_complaints & num\_complaints\_group & $\leq 1$, $>1$ \\
+num\_service\_calls & num\_service\_calls\_group & $\leq 3$, $>3$ \\
+late\_payments & late\_payments\_group & 0, 1--2, 3+ \\
+monthlycharges & monthlycharges\_group & $<200$, $\geq 200$ \\
+num\_services & num\_services\_group & 1--2, 3--4, 5--6 \\
+has\_tech\_support & has\_tech\_support & binary 0/1 feature \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\subsection{Interpretability Benefit}
+The selected features are not only model inputs; they also provide a structure
+for explaining churn. For example, satisfaction and complaints describe customer
+experience, contract and tenure describe commitment, and service/payment
+features describe operational behavior. This organization makes the final
+analysis easier to communicate to non-technical audiences.

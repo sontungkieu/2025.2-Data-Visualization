@@ -1,0 +1,9 @@
+kpi,value,format
+Total Customers,840765.0,integer
+Churned Customers,83362.0,integer
+Non-churn Customers,757403.0,integer
+Overall Churn Rate,0.09914999999999999,percent
+High-risk Active Customers,70403.0,integer
+Medium-risk Active Customers,467116.0,integer
+Test ROC AUC,0.67651,percent
+Test Recall,0.421945,percent

@@ -1,0 +1,4 @@
+risk_level,customers,predicted_churn,avg_churn_probability,avg_churn_probability_pct
+High Risk,70403,70403,0.7005483551553201,70.05
+Low Risk,219884,0,0.2830120033244802,28.3
+Medium Risk,467116,82299,0.4960964295785201,49.61

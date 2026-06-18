@@ -1,0 +1,34 @@
+# Secrets and credentials
+github_token.json
+kaggle*.json
+*.env
+.env
+
+# Raw datasets and large generated files
+customer_churn_dataset_clean.csv
+customer_churn_only.csv
+phase2/kaggle_dataset/
+phase2_outputs/
+powerbi_dashboard/data/overall_customers_selected.csv
+
+# Local/temporary tooling
+.kaggle_cli_legacy/
+.tmp_pbix_pkg/
+.sixth/
+__pycache__/
+*.pyc
+
+# External reference repository cloned for inspiration
+Analyze-and-predict-customer-churn-rate-with-Power-BI-and-Random-Forest/
+
+# Local context / assignment scratch files
+context.pdf
+252 168068 IT4023E Data Visualization.xlsx
+DATA VISUALIZATION.xlsx
+dashboard.pbix
+
+# OS/editor noise
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

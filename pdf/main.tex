@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T5]{fontenc}
+\IfFileExists{newtxtext.sty}{%
+  \usepackage{newtxtext}
+  \usepackage{newtxmath}
+}{%
+  \usepackage{mathptmx}
+}
+\usepackage[margin=2.35cm]{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Telecom Customer Churn Analysis Report},
+  pdfauthor={Tran Nguyen My Anh, Nguyen Ngoc Minh, Tran Le Ha Dan, Kieu Son Tung}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{topsep=0.2em,itemsep=0.2em,leftmargin=1.4em}
+\setlist[enumerate]{topsep=0.2em,itemsep=0.2em,leftmargin=1.6em}
+\sloppy
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Telecom Customer Churn Analysis}
+\rhead{\small Data Visualization}
+\cfoot{\thepage}
+
+\definecolor{PlaceholderBg}{HTML}{F2F6F4}
+\definecolor{PlaceholderLine}{HTML}{C8D6D1}
+\definecolor{Muted}{HTML}{5F6668}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\placeholder}[1]{%
+  \vspace{0.25em}
+  \noindent\fcolorbox{PlaceholderLine}{PlaceholderBg}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+      \textcolor{Muted}{\small #1}%
+    }%
+  }%
+  \vspace{0.25em}
+}
+
+\begin{document}
+
+\input{sections/en/00_title_abstract}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\input{sections/en/01_introduction}
+\input{sections/en/02_dataset_workflow}
+\input{sections/en/03_feature_selection_grouping}
+\input{sections/en/03_repository_and_modeling}
+\input{sections/en/04_eda_plan}
+\input{sections/en/04_visualization_design_principles}
+\input{sections/en/05_technique_application}
+\input{sections/en/05_expected_insights}
+\input{sections/en/06_limitations_next_steps}
+
+
+\end{document}

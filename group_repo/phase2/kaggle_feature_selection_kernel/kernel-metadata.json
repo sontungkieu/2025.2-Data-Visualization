@@ -1,0 +1,15 @@
+{
+  "id": "kieutung/datavis-phase-2-feature-correlation-rf-notebook",
+  "title": "DataVis Phase 2 Feature Correlation RF Notebook",
+  "code_file": "feature_selection_phase2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "isandeep06/customer-churn-prediction-dataset-1m"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

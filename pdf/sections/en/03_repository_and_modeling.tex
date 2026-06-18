@@ -1,0 +1,74 @@
+\section{Prediction Workflow}
+
+\subsection{Random Forest Pipeline}
+The pipeline uses the cleaned churn dataset,
+creates grouped features, encodes categorical variables, trains a Random Forest
+classifier, and exports model outputs for later analysis.
+
+\subsection{Model Evaluation Summary}
+Table \ref{tab:test_metrics} reports the Random Forest test metrics:
+\begin{table}[h]
+\centering
+\caption{Random Forest test metrics from the group repository}
+\label{tab:test_metrics}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+ROC AUC & 0.676510 \\
+Accuracy & 0.761694 \\
+Precision & 0.187745 \\
+Recall & 0.421945 \\
+F1-score & 0.259863 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model Performance Interpretation}
+The model performance should be interpreted in the context of churn prediction,
+rather than as a generic classification score. In the working dataset, the
+number of churned customers is 83,362 out of 840,765 customers, which gives a
+baseline churn rate of approximately 9.92\%. This means that the target class is
+strongly imbalanced: only about 10 out of every 100 customers are churned
+customers.
+
+For this reason, accuracy is not the primary evaluation metric. A naive model
+that predicts every customer as non-churn would already obtain about 90.08\%
+accuracy, but it would detect no churned customers. The Random Forest accuracy
+of 76.17\% should therefore not be interpreted as the main indicator of model
+quality. More informative metrics are precision, recall, F1-score, ROC AUC, and
+precision-recall based metrics. In this run, the recall of 42.19\% means that
+the model identifies about 42\% of the actual churned customers, while the low
+precision reflects the difficulty of separating a relatively small churn class
+from a much larger non-churn class.
+
+The model is also constrained by the Phase 2 feature design. The initial model
+uses interpretable, dashboard-friendly grouped features such as contract type,
+customer satisfaction group, complaint group, service-call group, late-payment
+group, monthly-charge group, tenure group, service-count group, and technical
+support. These variables contain useful directional signals, but they do not
+capture all possible churn drivers. For example, the dataset does not include
+detailed behavioral histories such as plan changes, discount history, competitor
+offers, support ticket text, customer sentiment, or detailed payment timelines.
+
+Another limitation is that several numeric variables are grouped into bins before
+modeling. This helps the dashboard remain readable and supports clear
+segment-level interpretation, but it can remove continuous detail that a
+predictive model might otherwise use. Therefore, the Random Forest model should
+be treated as a decision-support component for prioritizing retention actions,
+not as a perfect churn prediction system.
+
+The selected threshold is chosen on the validation set to improve the balance
+between precision and recall. Lowering the threshold would identify more churned
+customers but would also increase false positives. Raising the threshold would
+improve precision but miss more churned customers. This trade-off is acceptable
+for a retention dashboard, where the objective is to highlight customers or
+segments that deserve earlier attention from customer support or retention
+teams.
+
+Future model improvement should focus on using raw numeric features together
+with grouped features, testing gradient boosting models such as XGBoost,
+LightGBM, or CatBoost, tuning hyperparameters against F1 or PR-AUC rather than
+accuracy, handling class imbalance with class weights or resampling inside the
+training pipeline, and adding richer behavioral features if they become
+available.
